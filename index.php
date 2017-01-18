@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Explorateur de fichiers</title>
 
+	<title>Explorateur de fichiers</title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Explorateur de fichiers PHP</title>
     
 </head>
 <body>
-  
+  <section id="boris"><fieldset>
    <ul>
    
     <?php
-    
+       
+        
         $url = "http://localhost/Explorateur-de-fichiers"; 
        
         $slash = "\\"; //L'antislash sert à échapper les caractères comme les guillemets, pour stocker un antislash dans les variables, on en mets 2
@@ -36,6 +40,7 @@
                     if(is_dir($chemin)){
                         $dir = scandir($chemin);
                     }
+       
                             else{
                                 die("Erreur : Le chemin demandé n'est pas un dossier");
                             }
@@ -45,20 +50,24 @@
                                             
                                             if(is_dir($chemin.$fichier)){
                                                 
-                                                echo "Dossier : <a href ='".$url."?filrouge=".$cheminAEnvoyer.$fichier."'>".$fichier."</a></br>";
+                    echo "<div class='cadreDossiers'><i class='fa fa-folder-o fa-3x' aria-hidden='true'></i>: <a href='".$url."?filrouge=".$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
                                             }
                                             
+                                            
+                                            
                                         else if(is_file($chemin.$fichier)){
-                                            echo "Fichier : <a target='_blank' href='".$url.$slash.$cheminAEnvoyer.$fichier."'>".$fichier."</a></br>";
+                    echo "<div class='cadreFichiers'><i class='fa fa-file fa-2x' aria-hidden='true'></i>: <a target='_blank' href='".$url.$slash.$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
                                         }
                                             else{
                                                 echo "Type inconnu<br>";
                                             }
                                      }
        endforeach;
-       
+
     ?>
-    </ul>
-    
+       </br>
+       <a id="precedent"  href="javascript:history.go(-1)"> 	&lArr; </a>
+    </ul></fieldset>
+    </section>
 </body>
 </html>
