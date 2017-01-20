@@ -15,16 +15,16 @@
 <div class="container">
 <section class="row">
 
-<section id="clara" class="col-xs-2">
- <p >Explorateur de fichiers</p>
+<section id="clara" class="col-xs-2 col-lg-1">
+ <p id="titre"><strong>Big-Dossier</strong></p>
     </section>
   
-  <article  id="katsumi" class="col-xs-12">
+  <article  id="katsumi" class="col-xs-12 col-lg-8">
       
-  <fieldset>
+  
    
    <ul>
-   
+  
     <?php
        
         
@@ -74,16 +74,49 @@
                                             }
                                      }
        endforeach;
-
-    ?>
       
+  echo '<div id = fildariane>';
+        if(isset($_GET['filrouge']))
+        {
+
+            $adresse = $_GET['filrouge'];
+            $adresse = str_replace($chemin,"",$adresse);
+
+
+            $explorateur="Explorateur-de-fichiers";
+            $k = "";
+            $phrase= explode("\\",$adresse);
+            $phrase = array_filter($phrase);
+
+              echo '<a class="lien" href="?filrouge=">'.$explorateur.':<a/>';
+            foreach ($phrase as $key => $mot)
+            {
+                if ($mot == end($phrase))
+                  {
+
+                  $k .= $mot;// on peut aussi marquer au $k = $k.$mot//
+                  echo '<a class="lien" href="?filrouge='.$k.$slash.'"> '.$mot.' </a>';
+
+                  }
+                else
+                {
+                    $k .= $mot.$slash;
+                    echo '<a class="lien"href="?filrouge='.$k.$slash.'"> '.$mot.'&#8594; </a>';
+
+                }
+
+            }
+        }
+    echo '</div>';
+ 
+?> 
        </br>
        <div>
        <a id="precedent"  href="javascript:history.go(-1)">&lArr;</a><a id="suivant"  href="javascript:history.go(+1)">&rArr;</a>
      </div>
       
         </ul>
-         </fieldset>
+         
            
               
             </article>
