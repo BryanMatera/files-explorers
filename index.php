@@ -11,7 +11,18 @@
     
 </head>
 <body>
-  <section id="boris"><fieldset>
+
+<div class="container">
+<section class="row">
+
+<section id="clara" class="col-xs-2">
+ <p >Explorateur de fichiers</p>
+    </section>
+  
+  <article  id="katsumi" class="col-xs-12">
+      
+  <fieldset>
+   
    <ul>
    
     <?php
@@ -40,7 +51,7 @@
                     if(is_dir($chemin)){
                         $dir = scandir($chemin);
                     }
-       
+
                             else{
                                 die("Erreur : Le chemin demandé n'est pas un dossier");
                             }
@@ -50,13 +61,13 @@
                                             
                                             if(is_dir($chemin.$fichier)){
                                                 
-                    echo "<div class='cadreDossiers'><i class='fa fa-folder-o fa-3x' aria-hidden='true'></i>: <a href='".$url."?filrouge=".$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
+                    echo "<div class='cadreDossiers'><i class='fa fa-folder-o fa-2x' aria-hidden='true'></i> <a href='".$url."?filrouge=".$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
                                             }
                                             
                                             
                                             
                                         else if(is_file($chemin.$fichier)){
-                    echo "<div class='cadreFichiers'><i class='fa fa-file fa-2x' aria-hidden='true'></i>: <a target='_blank' href='".$url.$slash.$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
+                    echo "<div class='cadreFichiers'><i class='fa fa-file fa-2x' aria-hidden='true'></i> <a target='_blank' href='".$url.$slash.$cheminAEnvoyer.$fichier."'></br>".$fichier."</a></div></br>";
                                         }
                                             else{
                                                 echo "Type inconnu<br>";
@@ -65,9 +76,18 @@
        endforeach;
 
     ?>
+      
        </br>
-       <a id="precedent"  href="javascript:history.go(-1)"> 	&lArr; </a>
-    </ul></fieldset>
-    </section>
+       <div>
+       <a id="precedent"  href="javascript:history.go(-1)">&lArr;</a><a id="suivant"  href="javascript:history.go(+1)">&rArr;</a>
+     </div>
+      
+        </ul>
+         </fieldset>
+           
+              
+            </article>
+     </section>
+   </div> 
 </body>
 </html>
